@@ -46,7 +46,7 @@ function respond($ok, $message, $isAjax) {
        . 'border-radius:4px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}'
        . '.back:hover{background:#001668}</style>'
        . '</head><body><div class="box">'
-       . '<a class="logo" href="index.html"><img src="images/logo/aero-emblem-light-bg.png" alt="">'
+       . '<a class="logo" href="index.html"><img src="images/logo/aero-logo.png" alt="">'
        . '<span><span class="aero">Aero</span> <span class="global">Global</span></span></a>'
        . '<h1>' . $title . '</h1><p>' . htmlspecialchars($message, ENT_QUOTES, 'UTF-8')
        . '</p><a class="back" href="index.html#contact">Back to the site</a></div></body></html>';
