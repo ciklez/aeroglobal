@@ -147,4 +147,4 @@ if ($sent) {
     respond(true, 'Thank you. We will reply within one business day.', $isAjax);
 }
 
-respond(false, 'The message could not be sent. Please email cs-logistics@aeroglobal.com.my or call 03-3342 7963.', $isAjax);
+respond(false, 'The message could not be sent. Please email cs-logistics@aeroglobal.com.my call 03-3342 7963 or WhatsApp +60 12-791 8703.', $isAjax);
