@@ -5,7 +5,8 @@
  * Drop this next to index.html on any PHP-capable host (cPanel,
  * Plesk, shared hosting). Nothing else to install.
  *
- * Enquiries are delivered to cs-logistics@aeroglobal.com.my.
+ * Enquiries are delivered to cs-logistics@aeroglobal.com.my, and the
+ * sender gets a copy of what they submitted at the email they entered.
  * $FROM_DOMAIN must be the domain the site is hosted on.
  */
 $TO_ADDRESS = 'cs-logistics@aeroglobal.com.my';   // where enquiries land
@@ -134,17 +135,71 @@ $sent = @mail(
     '-f' . $sender
 );
 
+// --- send the sender a copy ------------------------------------
+// Only once the enquiry has reached us, so the visitor is never told
+// it was received when it was not. Replies to the copy go to our team.
+$copySent = false;
+if ($sent) {
+    $copySubject = 'We received your enquiry: ' . $service . ' — Aero Global Logistics';
+
+    $copyLines = [
+        'Dear ' . $name . ',',
+        '',
+        'Thank you for contacting Aero Global Logistics. We have received your',
+        'enquiry and our team will reply within one business day.',
+        '',
+        'A copy of what you sent us is below for your records.',
+        '',
+        str_repeat('=', 52),
+        'Name        : ' . $name,
+        'Company     : ' . ($company !== '' ? $company : '-'),
+        'Email       : ' . $email,
+        'Phone       : ' . ($phone !== '' ? $phone : '-'),
+        'Service     : ' . $service,
+        '',
+        'Shipment details',
+        str_repeat('-', 52),
+        $message,
+        str_repeat('=', 52),
+        '',
+        'If anything needs changing, simply reply to this email.',
+        '',
+        'Aero Global Logistics (M) Sdn Bhd',
+        'Email    : ' . $TO_ADDRESS,
+        'Phone    : 03-3342 7963',
+        'WhatsApp : +60 12-791 8703',
+    ];
+
+    $copyHeaders = [
+        'From: Aero Global Logistics <' . $sender . '>',
+        'Reply-To: Aero Global Logistics <' . $TO_ADDRESS . '>',
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'Content-Transfer-Encoding: 8bit',
+        'X-Mailer: PHP/' . phpversion(),
+    ];
+
+    $copySent = @mail(
+        $email,
+        '=?UTF-8?B?' . base64_encode($copySubject) . '?=',
+        implode("\n", $copyLines),
+        implode("\r\n", $copyHeaders),
+        '-f' . $sender
+    );
+}
+
 // --- log a copy regardless of mail success ---------------------
 if ($LOG_FILE) {
     @file_put_contents(
         $LOG_FILE,
-        '[' . date('c') . '] ' . ($sent ? 'SENT' : 'FAILED') . "\n" . $body . "\n\n",
+        '[' . date('c') . '] ' . ($sent ? 'SENT' : 'FAILED')
+            . ' | copy to sender: ' . ($copySent ? 'SENT' : 'NOT SENT') . "\n" . $body . "\n\n",
         FILE_APPEND | LOCK_EX
     );
 }
 
 if ($sent) {
-    respond(true, 'Thank you. We will reply within one business day.', $isAjax);
+    respond(true, 'Thank you. A copy has been sent to ' . $email . '. We will reply within one business day.', $isAjax);
 }
 
 respond(false, 'The message could not be sent. Please email cs-logistics@aeroglobal.com.my call 03-3342 7963 or WhatsApp +60 12-791 8703.', $isAjax);
