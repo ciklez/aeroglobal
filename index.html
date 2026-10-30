@@ -119,14 +119,15 @@ section.band{padding:clamp(4rem,8vw,7rem) 0}
 }
 .head-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:74px}
 .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:1.34rem;letter-spacing:-.01em;line-height:1;text-transform:uppercase;display:flex;align-items:center;gap:.7rem;flex:none}
-.logo-mark{width:46px;height:46px;flex:none;display:block}
+/* The emblem always sits in a white disc. Its counters are transparent, so
+   the disc keeps the A and O white on any ground; the faint ring keeps the
+   disc visible on the white header. */
+.logo-mark{width:46px;height:46px;flex:none;display:block;background:#ffffff;border-radius:50%;padding:3px;box-sizing:content-box;box-shadow:0 0 0 1px var(--line),0 2px 8px -3px rgba(0,22,104,.3)}
 /* AERO: brand blue on light ground, white on dark. GLOBAL: brand red on both. */
 .logo-aero{color:var(--navy)}
 .logo-global{color:var(--red)}
 .logo.on-dark .logo-aero{color:#ffffff}
-/* The logo's counters are transparent, so on a dark ground it needs a
-   light disc behind it or the A and O fill in and the mark goes muddy. */
-.logo.on-dark .logo-mark{background:#ffffff;border-radius:50%;padding:3px;box-sizing:content-box}
+.logo.on-dark .logo-mark{box-shadow:none}
 .nav{display:flex;align-items:center;gap:.35rem}
 .nav a{
   font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;
@@ -959,9 +960,9 @@ section.band{padding:clamp(4rem,8vw,7rem) 0}
         <a href="#contact" class="btn btn-navy" style="margin-top:2rem">Book local trucking <svg><use href="#ico-arrow"/></svg></a>
       </div>
       <div class="svc-shots">
-        <figure><img src="images/stock-truck-fleet.jpg" alt="Truck travelling along a country road, seen from above" loading="lazy"><figcaption>Nationwide delivery</figcaption></figure>
-        <figure><img src="images/agl-truck-highway.jpg" alt="Aero Global branded prime mover on a highway at dusk" loading="lazy"><figcaption>On the road</figcaption></figure>
-        <figure><img src="images/fleet-man.jpg" alt="MAN prime mover from the Aero Global Logistics fleet" loading="lazy"><figcaption>Our MAN prime mover</figcaption></figure>
+        <figure><img src="images/lt-hino-highway.jpg" alt="Two Aero Global branded Hino box trucks on a city highway" loading="lazy"><figcaption>Nationwide delivery</figcaption></figure>
+        <figure><img src="images/lt-hino-fleet.jpg" alt="Aero Global Hino box trucks parked at a warehouse at sunset" loading="lazy"><figcaption>Our rigid truck fleet</figcaption></figure>
+        <figure><img src="images/lt-hino-boxtruck.jpg" alt="Hino box truck parked on a gravel lot at sunset" loading="lazy"><figcaption>Box trucks for palletised cargo</figcaption></figure>
       </div>
     </div>
   </section>
@@ -1119,9 +1120,11 @@ section.band{padding:clamp(4rem,8vw,7rem) 0}
         <a href="#contact" class="btn btn-navy" style="margin-top:2rem">Discuss a project move <svg><use href="#ico-arrow"/></svg></a>
       </div>
       <div class="svc-shots">
-        <figure><img src="images/pm-oversize-road.jpg" alt="Oversized industrial vessel being transported on a multi-axle trailer" loading="lazy"><figcaption>Oversized cargo on the move</figcaption></figure>
-        <figure><img src="images/pm-heavy-lift.jpg" alt="Heavy-lift cranes loading large pipes onto a vessel" loading="lazy"><figcaption>Heavy lift operations</figcaption></figure>
-        <figure><img src="images/agl-project-crane.jpg" alt="Crane lifting a crated load beside a prime mover" loading="lazy"><figcaption>Crane lifting on site</figcaption></figure>
+        <figure><img src="images/pm-fuselage-banner.jpg" alt="Aircraft fuselage section secured on a flat rack with an Aero Global Logistics banner" loading="lazy"><figcaption>Aircraft fuselage move</figcaption></figure>
+        <figure><img src="images/pm-fuselage-flatrack.jpg" alt="Aircraft fuselage lashed to a flat rack container in a yard" loading="lazy"><figcaption>Out-of-gauge on flat rack</figcaption></figure>
+        <figure><img src="images/pm-quay-crane-lift.jpg" alt="Quay crane lifting a flat rack carrying an aircraft fuselage at the port" loading="lazy" style="object-position:center 35%"><figcaption>Quay crane lift at port</figcaption></figure>
+        <figure><img src="images/pm-flatrack-lashing.jpg" alt="Crew lashing steel structures onto a flat rack on a multi-axle trailer" loading="lazy"><figcaption>Lashing and securing</figcaption></figure>
+        <figure><img src="images/pm-flatrack-tarped.jpg" alt="Tarpaulin-covered cargo on a flat rack ready for transport" loading="lazy"><figcaption>Covered and ready to haul</figcaption></figure>
       </div>
     </div>
   </section>

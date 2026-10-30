@@ -40,7 +40,7 @@ function respond($ok, $message, $isAjax) {
        . '.box{background:#ffffff;border:1px solid #E1E5EF;border-top:4px solid #001668;border-radius:8px;padding:2.5rem;max-width:520px}'
        . '.logo{display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.8rem;font-family:Archivo,system-ui,sans-serif;'
        . 'font-weight:900;font-size:1.4rem;text-transform:uppercase;letter-spacing:-.01em;text-decoration:none}'
-       . '.logo img{width:48px;height:48px}.aero{color:#001668}.global{color:#d40000}'
+       . '.logo img{width:48px;height:48px;background:#ffffff;border-radius:50%;padding:3px;box-shadow:0 0 0 1px #E1E5EF,0 2px 8px -3px rgba(0,22,104,.3)}.aero{color:#001668}.global{color:#d40000}'
        . 'h1{font-size:1.5rem;margin:0 0 .8rem;color:' . $colour . '}p{color:#55607F;line-height:1.6;margin:0 0 1.6rem}'
        . '.back{display:inline-block;background:#d40000;color:#ffffff;text-decoration:none;padding:.85rem 1.6rem;'
        . 'border-radius:4px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}'
